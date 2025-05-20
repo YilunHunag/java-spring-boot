@@ -30,6 +30,14 @@
 		<java.version>24</java.version>
 	</properties>
 	<dependencies>
+		<!-- jwtFilter內需要的依賴 -->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.0.0</version> 
+			<scope>provided</scope>
+		</dependency>
+
 		<!-- 新增jwt三個依賴 -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
