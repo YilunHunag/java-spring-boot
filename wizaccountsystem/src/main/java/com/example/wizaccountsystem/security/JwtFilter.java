@@ -3,6 +3,7 @@ package com.example.wizaccountsystem.security;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.lang.NonNull;
 
 import jakarta.servlet.*;        // 取代 javax.servlet.*
 import jakarta.servlet.http.*;   // 取代 javax.servlet.http.*
@@ -18,11 +19,12 @@ public class JwtFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(
-            HttpServletRequest req,
-            HttpServletResponse res,
-            FilterChain chain
+            @NonNull HttpServletRequest req,
+            @NonNull HttpServletResponse res,
+            @NonNull FilterChain chain
     ) throws ServletException, IOException {
         String path = req.getRequestURI();
+
         // 排除登入與公共資源
         if (path.startsWith("/auth") || path.startsWith("/error")) {
             chain.doFilter(req, res);
